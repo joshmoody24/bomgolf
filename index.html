@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book of Mormon Golf</title>
+        <link href="styles4.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="image/png" href="./favicon.png">
+        <script type="text/javascript" src="game.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/fa8b38d2dd.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@300;400;500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+    <body onload="gameSetup()">
+
+        <audio controls loop id="bgmPlayer">
+        <source src="./music/One True Church.mp3" type="audio/mpeg">
+        </audio>
+
+        <div id="startgamepanel-outer">
+            <div class="gamewindow" id="startgamepanel-inner">
+                <div class="welcometext">Welcome to Book of Mormon Golf!</div>
+                <button class = "gamebutton" id="startGameButton" onclick="newGame()" height=100px width=300px>Start</button>
+            </div>
+        </div>
+
+        <div class="gamewindow mainwindow isblurred" id="gamewindow">
+            <div class="gamewindow gameheader">
+                Book of Mormon Golf
+            </div>
+            <div class="gamewindow verse" id="versebox">
+                Here is an example verse
+            </div>
+
+            <div class="gamewindow bookinput" id="bookinput">
+                <button class="gamebutton BookButton" id="1 Nephi" onclick="testBook('1 Nephi')">1 Nephi</button>
+                <button class="gamebutton BookButton" id="2 Nephi" onclick="testBook('2 Nephi')">2 Nephi</button>
+                <button class="gamebutton BookButton" id="Jacob" onclick="testBook('Jacob')">Jacob</button>
+                <button class="gamebutton BookButton" id="Enos" onclick="testBook('Enos')">Enos</button>
+                <button class="gamebutton BookButton" id="Jarom" onclick="testBook('Jarom')">Jarom</button>
+                <button class="gamebutton BookButton" id="Omni" onclick="testBook('Omni')">Omni</button>
+                <button class="gamebutton BookButton" id="Words of Mormon" onclick="testBook('Words of Mormon')">Words of Mormon</button>
+                <button class="gamebutton BookButton" id="Mosiah" onclick="testBook('Mosiah')">Mosiah</button>
+                <button class="gamebutton BookButton" id="Alma" onclick="testBook('Alma')">Alma</button>
+                <button class="gamebutton BookButton" id="Helaman" onclick="testBook('Helaman')">Helaman</button>
+                <button class="gamebutton BookButton" id="3 Nephi" onclick="testBook('3 Nephi')">3 Nephi</button>
+                <button class="gamebutton BookButton" id="4 Nephi" onclick="testBook('4 Nephi')">4 Nephi</button>
+                <button class="gamebutton BookButton" id="Mormon" onclick="testBook('Mormon')">Mormon</button>
+                <button class="gamebutton BookButton" id="Ether" onclick="testBook('Ether')">Ether</button>
+                <button class="gamebutton BookButton" id="Moroni" onclick="testBook('Moroni')">Moroni</button>
+            </div>
+
+            <div class="gamewindow chapterinput" id="chapterinput">
+
+            </div>
+
+            <div class="gamewindow settings" id="settings">
+                <div><span class="bold">Settings</span><hr></div>
+                <div id="healthsettings">
+                    <span class="bold">Starting Health</span><br>
+                    <button onclick="decrementMaxHealth()" class="gamebutton" id="decrementhealthbutton">-</button>
+                    <span id="maxhealthdisplay" class="semi-bold">3</span>
+                    <button onclick="incrementMaxHealth()" class="gamebutton" id="incrementhealthbutton">+</button>
+                </div>
+                <div id="audiosettings">
+                    <form>
+                    <span class="bold">Audio</span><br>
+                    <input type="checkbox" id="sfxbox" name="sfxbox" value="SFX" checked>
+                    <label for="sfxbox">Sound FX&nbsp;</label><br>
+                    <input type="checkbox" id="bgmbox" name="bgmbox" value="BGM" onclick="toggleBGM()">
+                    <label for="bgmbox">BG Music&nbsp;</label><br>
+                    </form>
+                </div>
+                <div id="gameplaysettings">
+                    <form>
+                        <span class="bold">Gameplay</span><br>
+                        <input type="checkbox" onclick="updateVerseDisplay()" id="versenumberbox" name="versenumberbox" value="VN" checked>
+                        <label for="versenumberbox">Verse numbers</label><br>
+                        <input type="checkbox" id="hintsbox" name="hintsbox" value="Hints">
+                        <label for="hintsbox">Chapter hints&nbsp;&nbsp;&nbsp;</label><br>
+                        </form>
+                </div>
+            </div>
+
+            <button onclick="hideSettings()" class="gamebutton" id="closesettingsbutton"><span class="fas fa-times"></span></button>
+            <button onclick="showSettings()" class="gamebutton" id="settingsbutton"><span class="fas fa-cog"></span></button>
+            <button onclick="newGame()" class="gamebutton" id="newgamebutton"><span class="fas fa-undo"></span></button>
+            <!-- todo: add about window to game itself-->
+            <button onclick="window.location.href='about.html'" class="gamebutton" id="aboutbutton"><span class="fas fa-question"></span></button>
+            <div class="gamewindow" id="gamelog">
+                Log
+            </div>
+        </div>
+
+    </body>
+</html>
