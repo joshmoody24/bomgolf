@@ -24,7 +24,7 @@ var decrementHealthButton;
 var maxHealthDisplay;
 var maxhp;
 const maxhplimit = 9;
-const defaultHealth = 3;
+const defaultHealth = 5;
 var hp;
 var healthDisplay;
 
