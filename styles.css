@@ -226,6 +226,10 @@ body{
     box-sizing: border-box;
 }
 
+.welcometext a {
+    text-decoration: none;
+}
+
 #newgamebutton{
     top:0;
 }
