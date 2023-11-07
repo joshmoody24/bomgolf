@@ -111,7 +111,13 @@ function loadJSON(callback) {
     xobj.send(null);  
  }
 
-function newGame(){
+function newGame(firstLoad=false){
+    if(!firstLoad){
+        gtag('event', 'click', {
+            category: 'button',
+            label: 'Restart',
+        });
+    }
     //if the browser blocked auto play audio
     if(bgmPlayer.paused){
         bgmCheckBox.checked = false;
@@ -194,6 +200,10 @@ function pickRandomVerse(){
 }
 
 function testBook(bookName){
+    gtag('event', 'click', {
+        category: 'button',
+        label: 'Book: ' + bookName,
+    });
     playSound(tapSound);
     var currentButton = document.getElementById(bookName)
     if(isInRound == false){
@@ -246,6 +256,10 @@ function beginRound(){
 
 function testChapter(i){
     try{
+        gtag('event', 'click', {
+            category: 'button',
+            label: 'Chapter: ' + bookName,
+        });
         //make sure i is an integer, not a string
         i = parseInt(i);
         playSound(tapSound);
@@ -313,12 +327,18 @@ function loseHealth(){
     }
 }
 function gameOver(){
+    gtag('event', 'game_complete', {
+        success: false,
+    });
     healthDisplay.innerHTML = "<p>Game Over</p><p>Correct answer: " + book + " " + chapter + "</p>";
     disableButtons(bookButtons, true);
     disableChapterButtons();
     playSound(wrongSound2);
 }
 function win(){
+    gtag('event', 'game_complete', {
+        success: true,
+    });
     healthDisplay.innerHTML = "You Win!";
     playSound(successSound);
 }
