@@ -258,7 +258,7 @@ function testChapter(i){
     try{
         gtag('event', 'click', {
             category: 'button',
-            label: 'Chapter: ' + bookName,
+            label: 'Chapter: ' + book + ' ' + chapter,
         });
         //make sure i is an integer, not a string
         i = parseInt(i);
