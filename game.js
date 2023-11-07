@@ -119,7 +119,7 @@ function newGame(firstLoad=false){
         });
     }
     //if the browser blocked auto play audio
-    if(bgmPlayer.paused){
+    if(bgmPlayer?.paused){
         bgmCheckBox.checked = false;
     }
     hp = maxhp;
