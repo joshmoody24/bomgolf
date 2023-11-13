@@ -329,6 +329,8 @@ function loseHealth(){
 function gameOver(){
     gtag('event', 'game_complete', {
         success: false,
+        hints: hintsBox.checked,
+        misses: maxhp - hp,
     });
     healthDisplay.innerHTML = "<p>Game Over</p><p>Correct answer: " + book + " " + chapter + "</p>";
     disableButtons(bookButtons, true);
@@ -338,6 +340,8 @@ function gameOver(){
 function win(){
     gtag('event', 'game_complete', {
         success: true,
+        hints: hintsBox.checked,
+        misses: maxhp - hp,
     });
     healthDisplay.innerHTML = "You Win!";
     playSound(successSound);
@@ -361,12 +365,27 @@ function playSound(audio){
     }
 }
 
+function onToggleSfx(newState){
+    gtag('event', 'audio', {
+        category: 'sfx',
+        label: newState ? 'on' : 'off',
+    });
+}
+
 function toggleBGM(){
     if(bgmCheckBox.checked){
         bgmPlayer.play();
+        gtag('event', 'audio', {
+            category: 'bgm',
+            label: 'play',
+        });
     }
     else{
         bgmPlayer.pause();
+        gtag('event', 'audio', {
+            category: 'bgm',
+            label: 'stop',
+        });
     }
 }
 
