@@ -365,10 +365,10 @@ function playSound(audio){
     }
 }
 
-function onToggleSfx(newState){
+function onToggleSfx(){
     gtag('event', 'audio', {
         category: 'sfx',
-        label: newState ? 'on' : 'off',
+        label: sfxCheckBox.checked ? 'on' : 'off',
     });
 }
 
