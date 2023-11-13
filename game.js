@@ -332,6 +332,9 @@ function gameOver(){
         hints: hintsBox.checked,
         misses: maxhp - hp,
     });
+    // temporary backup analytics values in case processing is too slow
+    if(hintsBox.checked) gtag('event', 'lose_hints');
+    else gtag('event', 'lose_nohints');
     healthDisplay.innerHTML = "<p>Game Over</p><p>Correct answer: " + book + " " + chapter + "</p>";
     disableButtons(bookButtons, true);
     disableChapterButtons();
@@ -343,6 +346,9 @@ function win(){
         hints: hintsBox.checked,
         misses: maxhp - hp,
     });
+    // temporary backup analytics values in case processing is too slow
+    if(hintsBox.checked) gtag('event', 'win_hints');
+    else gtag('event', 'win_nohints');
     healthDisplay.innerHTML = "You Win!";
     playSound(successSound);
 }
